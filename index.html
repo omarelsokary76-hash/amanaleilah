@@ -1,0 +1,1578 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>أمان العيلة - تسجيل الدخول</title>
+<link rel="manifest" href="data:application/manifest+json;base64,eyJuYW1lIjogItij2YXYp9mGINin2YTYudmK2YTYqSIsICJzaG9ydF9uYW1lIjogItij2YXYp9mGINin2YTYudmK2YTYqSIsICJzdGFydF91cmwiOiAiLiIsICJkaXNwbGF5IjogInN0YW5kYWxvbmUiLCAiYmFja2dyb3VuZF9jb2xvciI6ICIjMjQxNzIyIiwgInRoZW1lX2NvbG9yIjogIiMyNDE3MjIiLCAibGFuZyI6ICJhciIsICJkaXIiOiAicnRsIiwgImljb25zIjogW3sic3JjIjogImljb24tMTkyLnBuZyIsICJzaXplcyI6ICIxOTJ4MTkyIiwgInR5cGUiOiAiaW1hZ2UvcG5nIiwgInB1cnBvc2UiOiAiYW55In0sIHsic3JjIjogImljb24tNTEyLnBuZyIsICJzaXplcyI6ICI1MTJ4NTEyIiwgInR5cGUiOiAiaW1hZ2UvcG5nIiwgInB1cnBvc2UiOiAiYW55In0sIHsic3JjIjogImljb24tNTEyLW1hc2thYmxlLnBuZyIsICJzaXplcyI6ICI1MTJ4NTEyIiwgInR5cGUiOiAiaW1hZ2UvcG5nIiwgInB1cnBvc2UiOiAibWFza2FibGUifV19">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<meta name="theme-color" content="#241722">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="أمان العيلة">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@500;700;900&family=IBM+Plex+Sans+Arabic:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #241722;
+    --card: #32212F;
+    --card2: #3C2839;
+    --line: #4A3245;
+    --text: #F6EDE8;
+    --muted: #AB8E9E;
+    --sos: #E4553E;
+    --sos-dim: #4A2A24;
+    --safe: #7FA787;
+    --safe-dim: #253B2A;
+    --occasion: #D4A657;
+    --occasion-dim: #3E3220;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'IBM Plex Sans Arabic', sans-serif;
+    min-height: 100vh;
+  }
+  .wrap { max-width: 480px; margin: 0 auto; padding: 20px 16px 90px; }
+  h1, h2, h3 { font-family: 'El Messiri', sans-serif; }
+
+  .onboard { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 24px; }
+  .onboard-title { font-size: 34px; font-weight: 900; margin-bottom: 8px; }
+  .onboard-sub { color: var(--muted); font-size: 15px; margin-bottom: 36px; line-height: 1.6; }
+  .choice-card {
+    background: var(--card); border: 1px solid var(--line); border-radius: 18px;
+    padding: 20px; margin-bottom: 14px; cursor: pointer;
+  }
+  .choice-card h3 { font-size: 18px; margin-bottom: 4px; }
+  .choice-card p { color: var(--muted); font-size: 13px; }
+  .field { margin-bottom: 14px; }
+  .field label { display: block; font-size: 13px; color: var(--muted); margin-bottom: 6px; }
+  .field input, .field select {
+    width: 100%; background: var(--bg); border: 1px solid var(--line);
+    border-radius: 10px; padding: 13px 14px; color: var(--text);
+    font-family: inherit; font-size: 15px;
+  }
+  .field input:focus, .field select:focus { outline: 1px solid var(--occasion); }
+  .btn-primary {
+    width: 100%; background: var(--occasion); color: #2B2110; border: none;
+    border-radius: 12px; padding: 15px; font-family: 'El Messiri', sans-serif;
+    font-weight: 700; font-size: 16px; cursor: pointer;
+  }
+  .btn-ghost {
+    width: 100%; background: none; border: 1px solid var(--line); color: var(--muted);
+    border-radius: 12px; padding: 13px; font-size: 14px; cursor: pointer; margin-top: 10px;
+  }
+  .btn-secondary {
+    width: 100%; background: var(--card2); color: var(--text); border: 1px solid var(--line);
+    border-radius: 12px; padding: 13px; font-family: 'El Messiri', sans-serif;
+    font-weight: 700; font-size: 15px; cursor: pointer; margin-top: 8px;
+  }
+  .back-link { color: var(--muted); font-size: 13px; margin-bottom: 18px; cursor: pointer; display: inline-block; }
+  .note-box {
+    background: rgba(212,166,87,0.08); border: 1px solid rgba(212,166,87,0.25);
+    border-radius: 12px; padding: 12px 14px; font-size: 12px; color: var(--muted); line-height: 1.7; margin-top: 18px;
+  }
+  .hidden { display: none !important; }
+  .tabs-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+  .tab-btn {
+    flex: 1;
+    padding: 10px;
+    text-align: center;
+    border-radius: 12px;
+    border: 1px solid var(--line);
+    background: transparent;
+    color: var(--muted);
+    font-family: 'El Messiri', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    cursor: pointer;
+  }
+  .tab-btn.active {
+    background: var(--card);
+    border-color: var(--occasion);
+    color: var(--occasion);
+  }
+  .divider {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 16px 0;
+    color: var(--muted);
+    font-size: 12px;
+  }
+  .divider::before, .divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--line);
+  }
+</style>
+</head>
+<body>
+
+<!-- LOGIN/REGISTER SCREEN -->
+<div id="loginScreen" class="onboard">
+  <div class="onboard-title" id="loginTitle">أمان العيلة</div>
+  <div class="onboard-sub">تطبيق بسيط يخلّي أهل بيتك يطمنّوا عليك، وانت تطمن عليهم</div>
+  
+  <!-- Tabs -->
+  <div class="tabs-row">
+    <button class="tab-btn active" id="loginTabBtn">🔐 تسجيل دخول</button>
+    <button class="tab-btn" id="registerTabBtn">📝 تسجيل جديد</button>
+  </div>
+
+  <!-- Login Tab -->
+  <div id="loginTabContent">
+    <div class="field">
+      <label>🔑 كود العائلة</label>
+      <input type="text" id="loginCode" placeholder="أدخل كود العائلة" style="text-align:center;font-size:20px;letter-spacing:3px;">
+    </div>
+    <div class="field">
+      <label>📱 رقم هاتفك</label>
+      <input type="tel" id="loginPhoneOnly" placeholder="01xxxxxxxxx">
+    </div>
+    <button class="btn-primary" id="loginSubmit">دخول</button>
+    <div id="loginError" style="color:var(--sos); font-size:13px; margin-top:10px; display:none;">
+      ⚠️ رقم الهاتف غير مسجل في هذه العائلة، أو الكود غير صحيح.
+    </div>
+  </div>
+
+  <!-- Register Tab -->
+  <div id="registerTabContent" class="hidden">
+    <div class="field">
+      <label>🔑 كود العائلة</label>
+      <input type="text" id="registerCode" placeholder="أدخل كود العائلة" style="text-align:center;font-size:20px;letter-spacing:3px;">
+    </div>
+    <div class="field">
+      <label>👤 اسمك</label>
+      <input type="text" id="registerName" placeholder="مثلاً: أحمد محمد">
+    </div>
+    <div class="field">
+      <label>📱 رقم هاتفك</label>
+      <input type="tel" id="registerPhone" placeholder="01xxxxxxxxx">
+    </div>
+    <div class="field">
+      <label>صلتك بالعائلة</label>
+      <select id="registerRelation">
+        <option value="ابن">ابن</option>
+        <option value="ابنة">ابنة</option>
+        <option value="أب">أب</option>
+        <option value="أم">أم</option>
+        <option value="جد">جد</option>
+        <option value="جدة">جدة</option>
+        <option value="عم">عم</option>
+        <option value="عمة">عمة</option>
+        <option value="خال">خال</option>
+        <option value="خالة">خالة</option>
+        <option value="أخرى">قرابة أخرى</option>
+      </select>
+    </div>
+    <button class="btn-primary" id="registerSubmit">تسجيل جديد</button>
+    <div id="registerError" style="color:var(--sos); font-size:13px; margin-top:10px; display:none;"></div>
+  </div>
+
+  <div class="divider">أو</div>
+
+  <button class="btn-secondary" id="createFamilyBtn">➕ إنشاء عائلة جديدة</button>
+</div>
+
+<!-- ADMIN PANEL SCREEN (hidden control panel, no visible entry point) -->
+<div id="adminScreen" class="hidden">
+  <div class="admin-wrap">
+
+    <!-- key prompt -->
+    <div id="adminLoginBox" class="admin-login-box">
+      <div class="onboard-title" style="font-size:24px;">لوحة التحكم</div>
+      <div class="onboard-sub" style="margin-bottom:20px;">أدخل مفتاح الإدارة</div>
+      <div class="field"><input type="password" id="adminKeyInput" placeholder="مفتاح الإدارة"></div>
+      <button class="btn-primary" id="adminKeySubmit">دخول</button>
+      <div id="adminLoginError" style="color:var(--sos); font-size:13px; margin-top:10px; display:none;"></div>
+      <div class="admin-back" id="adminCancelLogin" style="margin-top:18px;">‹ رجوع</div>
+    </div>
+
+    <!-- dashboard -->
+    <div id="adminDashboard" class="hidden">
+      <div class="admin-header">
+        <h2>لوحة التحكم</h2>
+        <button class="admin-logout" id="adminLogoutBtn">خروج</button>
+      </div>
+
+      <div class="admin-stats" id="adminStats"></div>
+
+      <div class="admin-tabs">
+        <button class="admin-tab-btn active" id="adminTabFamilies">العائلات</button>
+        <button class="admin-tab-btn" id="adminTabEvents">آخر الأحداث</button>
+      </div>
+
+      <!-- families list -->
+      <div id="adminFamiliesList"></div>
+
+      <!-- single family detail -->
+      <div id="adminFamilyDetail" class="hidden">
+        <span class="admin-back" id="adminBackToFamilies">‹ كل العائلات</span>
+        <div id="adminFamilyDetailContent"></div>
+      </div>
+
+      <!-- events feed -->
+      <div id="adminEventsList" class="hidden"></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- CREATE FAMILY SCREEN -->
+<div id="createFamilyScreen" class="onboard hidden">
+  <span class="back-link" id="backFromCreateFamily">‹ رجوع</span>
+  <h2 style="font-size:22px; margin-bottom:18px;">🏠 إنشاء عائلة جديدة</h2>
+  <div style="background:var(--card2);border-radius:12px;padding:16px;margin-bottom:20px;text-align:center;">
+    <div style="font-size:13px;color:var(--muted);">كود العائلة (هيتولّد لوحده)</div>
+    <div id="newFamilyCode" style="font-family:'El Messiri';font-size:28px;font-weight:900;letter-spacing:5px;color:var(--occasion);margin-top:8px;">------</div>
+    <div style="font-size:11px;color:var(--muted);margin-top:4px;">ده الكود اللي هتشاركه مع عيلتك بعد كده</div>
+  </div>
+  <div class="field">
+    <label>اسمك</label>
+    <input type="text" id="newFamilyName" placeholder="مثلاً: أحمد">
+  </div>
+  <div class="field">
+    <label>رقم هاتفك</label>
+    <input type="tel" id="newFamilyPhone" placeholder="01xxxxxxxxx">
+  </div>
+  <div class="field">
+    <label>صلتك بالعائلة</label>
+    <select id="newFamilyRelation">
+      <option value="أب">أب</option>
+      <option value="أم">أم</option>
+    </select>
+  </div>
+  <button class="btn-primary" id="createFamilySubmit">إنشاء العائلة</button>
+  <div id="createFamilyError" style="color:var(--sos); font-size:13px; margin-top:10px; display:none;"></div>
+</div>
+
+<!-- MAIN APP -->
+<div id="mainScreen" class="hidden">
+  <div class="wrap">
+    <div class="topbar">
+      <div>
+        <h1 id="greeting">أهلاً</h1>
+        <div class="fam-code">كود العائلة: <span id="famCodeSmall"></span></div>
+      </div>
+      <div class="status-dot"><span class="dot"></span><span id="lastUpdate">محدّث الآن</span></div>
+    </div>
+
+    <div class="circle-row" id="circleRow"></div>
+
+    <!-- HOME TAB -->
+    <div id="homeTab">
+      <div class="actions">
+        <button class="action-btn sos" id="sosBtn">
+          <span class="icon">🚨</span>
+          محتاج مساعدة الآن
+        </button>
+        <button class="action-btn safe" id="safeBtn">
+          <span class="icon">✅</span>
+          وصلت بأمان
+        </button>
+        <button class="action-btn occasion" id="occasionBtn">
+          <span class="icon">📣</span>
+          إعلان مناسبة
+        </button>
+      </div>
+      <div class="section-title">آخر التحديثات</div>
+      <div id="feedList"></div>
+    </div>
+
+    <!-- CHAT TAB -->
+    <div id="chatTab" class="hidden">
+      <div class="section-title">💬 المجلس العائلي</div>
+      <div id="chatContainer" class="chat-container"></div>
+      <div id="mediaUploadStatus" style="font-size:12px;color:var(--occasion);margin-bottom:6px;"></div>
+      <div class="chat-media-row">
+        <button class="media-btn" id="photoBtn" title="صورة">📷</button>
+        <button class="media-btn" id="audioBtn" title="تسجيل صوتي">🎙️</button>
+        <button class="media-btn" id="videoBtn" title="فيديو">🎥</button>
+      </div>
+      <input type="file" id="photoInput" accept="image/*" capture="environment" class="hidden">
+      <input type="file" id="audioInput" accept="audio/*" capture class="hidden">
+      <input type="file" id="videoInput" accept="video/*" capture="environment" class="hidden">
+      <div class="chat-input-row">
+        <input type="text" id="chatInput" placeholder="اكتب رسالة للعيلة...">
+        <button id="chatSendBtn">إرسال</button>
+      </div>
+    </div>
+
+    <!-- FAMILY TAB -->
+    <div id="familyTab" class="hidden">
+      <div class="section-title">أفراد العائلة</div>
+      <div id="memberList"></div>
+      <div class="note-box" id="trustNote">
+        الأب والأم في دائرة أمانك دايمًا تلقائيًا. تقدر تضيف قرابة تانية لدائرتك بالضغط على "أضف لدائرتي" جنب اسمهم. "كبير العائلة" هو اللي أنشأ العائلة، وهو الوحيد اللي يقدر يحذف أي عضو.
+      </div>
+    </div>
+
+    <!-- SETTINGS TAB -->
+    <div id="settingsTab" class="hidden">
+      <div class="section-title">🔊 نغمة إنذار الخطر</div>
+      <div class="field">
+        <select id="sosToneSelect">
+          <option value="siren">صفارة إنذار (قوية)</option>
+          <option value="klaxon">بوق متكرر</option>
+          <option value="bell">جرس حاد</option>
+        </select>
+      </div>
+      <button class="btn-ghost" id="testSosTone" style="margin-bottom:8px;">🔈 جرّب الصوت</button>
+      <div class="field">
+        <label>أو ارفع نغمة من هاتفك (اختياري)</label>
+        <input type="file" id="sosCustomFile" accept="audio/*">
+      </div>
+      <div id="sosCustomStatus" style="font-size:12px;color:var(--safe);margin-bottom:6px;"></div>
+
+      <div class="section-title">✅ نغمة إنذار الاستقرار</div>
+      <div class="field">
+        <select id="safeToneSelect">
+          <option value="chime">جرس هادي</option>
+          <option value="soft">نغمة ناعمة</option>
+        </select>
+      </div>
+      <button class="btn-ghost" id="testSafeTone" style="margin-bottom:8px;">🔈 جرّب الصوت</button>
+      <div class="field">
+        <label>أو ارفع نغمة من هاتفك (اختياري)</label>
+        <input type="file" id="safeCustomFile" accept="audio/*">
+      </div>
+      <div id="safeCustomStatus" style="font-size:12px;color:var(--safe);margin-bottom:6px;"></div>
+
+      <button class="btn-primary" id="saveSoundPrefs">حفظ التفضيلات</button>
+      <div class="note-box">
+        المتصفح مش بيقدر يوصل لمكتبة نغمات الهاتف الأصلية (قيد أمان من أندرويد وآيفون)، فبنقدملك نغمات مدمجة قوية بدلها، أو تقدر ترفع أي ملف صوت عندك في الهاتف يتشغل بدلها. التفضيل ده خاص بجهازك انت بس.
+      </div>
+    </div>
+
+    <div class="note-box">
+      هذا نموذج تجريبي — كل البيانات تُخزن ومشتركة بين كل أفراد العائلة عبر الإنترنت. اختر كود ثابت عند إنشاء العائلة.
+    </div>
+  </div>
+
+  <div class="tabbar">
+    <button class="tab active" id="tabHomeBtn"><span class="icon">🏠</span>الرئيسية</button>
+    <button class="tab" id="tabChatBtn"><span class="icon">💬</span>المجلس</button>
+    <button class="tab" id="tabFamilyBtn"><span class="icon">👪</span>العائلة</button>
+    <button class="tab" id="tabSettingsBtn"><span class="icon">⚙️</span>الإعدادات</button>
+  </div>
+</div>
+
+<!-- OCCASION MODAL -->
+<div id="occasionModal" class="modal-overlay hidden">
+  <div class="modal">
+    <h3>إعلان مناسبة للعائلة</h3>
+    <div class="type-picker">
+      <div class="type-pick sel-فرح" data-type="فرح">🎉 فرح</div>
+      <div class="type-pick sel-وفاة" data-type="وفاة">🕊️ وفاة</div>
+      <div class="type-pick sel-طارئ" data-type="طارئ">⚠️ ظرف طارئ</div>
+    </div>
+    <div class="field">
+      <label>التفاصيل</label>
+      <textarea id="occasionText" placeholder="اكتب تفاصيل المناسبة..."></textarea>
+    </div>
+    <button class="btn-primary" id="occasionSubmit">إرسال للعائلة كلها</button>
+    <button class="btn-ghost" id="occasionCancel">إلغاء</button>
+  </div>
+</div>
+
+<style>
+  .chat-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 12px;
+    max-height: 60vh;
+    overflow-y: auto;
+    padding: 4px 0;
+  }
+  .chat-msg {
+    background: var(--card);
+    border-radius: 12px;
+    padding: 10px 14px;
+    max-width: 85%;
+    border-right: 2px solid var(--line);
+  }
+  .chat-msg.me {
+    align-self: flex-end;
+    border-right-color: var(--occasion);
+    background: var(--card2);
+  }
+  .chat-msg .sender {
+    font-size: 11px;
+    color: var(--occasion);
+    font-weight: 600;
+    margin-bottom: 2px;
+  }
+  .chat-msg .text {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  .chat-msg .time {
+    font-size: 10px;
+    color: var(--muted);
+    margin-top: 4px;
+    text-align: left;
+  }
+  .chat-input-row {
+    display: flex;
+    gap: 8px;
+    margin-top: 6px;
+  }
+  .chat-input-row input {
+    flex: 1;
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 12px 14px;
+    color: var(--text);
+    font-family: inherit;
+    font-size: 14px;
+  }
+  .chat-input-row input:focus { outline: 1px solid var(--occasion); }
+  .chat-input-row button {
+    background: var(--occasion);
+    color: #2B2110;
+    border: none;
+    border-radius: 10px;
+    padding: 12px 18px;
+    font-family: 'El Messiri', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  .chat-input-row button:active { transform: scale(0.97); }
+  .chat-media-row { display: flex; gap: 8px; margin-bottom: 8px; }
+  .media-btn {
+    background: var(--card2); border: 1px solid var(--line); border-radius: 10px;
+    padding: 10px 14px; font-size: 17px; cursor: pointer;
+  }
+  .media-btn:active { transform: scale(0.94); }
+  .chat-msg img, .chat-msg video { width: 100%; border-radius: 8px; margin-top: 4px; display: block; }
+  .chat-msg audio { width: 100%; margin-top: 4px; }
+  .topbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px; }
+  .topbar h1 { font-size: 22px; }
+  .topbar .fam-code { font-size: 11px; color: var(--muted); }
+  .status-dot { display: inline-flex; align-items: center; gap: 5px; font-size: 11px; color: var(--muted); }
+  .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--safe); }
+  .circle-row { display: flex; gap: 10px; overflow-x: auto; padding: 4px 0 16px; }
+  .avatar {
+    flex-shrink: 0; width: 54px; text-align: center; font-size: 11px; color: var(--muted);
+  }
+  .avatar .bubble {
+    width: 46px; height: 46px; border-radius: 50%; background: var(--card2);
+    border: 1.5px solid var(--line); display: flex; align-items: center; justify-content: center;
+    font-family: 'El Messiri'; font-weight: 700; font-size: 15px; color: var(--text); margin: 0 auto 5px;
+  }
+  .avatar .bubble.parent { border-color: var(--occasion); }
+  .avatar .bubble.me { border-color: var(--safe); border-width: 2px; }
+  .actions { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
+  .action-btn {
+    border: none; border-radius: 16px; padding: 20px 14px; cursor: pointer;
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
+    font-family: 'El Messiri', sans-serif; font-weight: 700; font-size: 14px;
+  }
+  .action-btn .icon { font-size: 26px; }
+  .action-btn.sos { background: var(--sos); color: #fff; grid-column: 1 / -1; padding: 22px; }
+  .action-btn.safe { background: var(--safe-dim); color: var(--safe); border: 1px solid var(--safe); }
+  .action-btn.occasion { background: var(--occasion-dim); color: var(--occasion); border: 1px solid var(--occasion); }
+  .action-btn:active { transform: scale(0.97); }
+  .section-title { font-size: 15px; font-weight: 700; margin: 22px 0 10px 2px; color: var(--text); }
+  .feed-item {
+    background: var(--card); border-radius: 14px; padding: 14px 16px; margin-bottom: 10px;
+    border-right: 3px solid var(--line);
+  }
+  .feed-item.sos { border-right-color: var(--sos); }
+  .feed-item.safe { border-right-color: var(--safe); }
+  .feed-item.occasion { border-right-color: var(--occasion); }
+  .feed-item.join { border-right-color: var(--muted); }
+  .admin-badge { font-size: 10px; color: var(--occasion); border: 1px solid var(--occasion); border-radius: 6px; padding: 2px 6px; margin-right: 6px; }
+  .remove-btn { font-size: 11px; padding: 5px 10px; border-radius: 8px; border: 1px solid var(--sos); color: var(--sos); background: none; cursor: pointer; }
+  .feed-item .row1 { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 4px; }
+  .feed-item .who { font-weight: 600; font-size: 14px; }
+  .feed-item .when { font-size: 11px; color: var(--muted); }
+  .feed-item .msg { font-size: 13.5px; color: var(--text); line-height: 1.6; }
+  .feed-item .loc-link { display: inline-block; margin-top: 8px; font-size: 12px; color: var(--occasion); text-decoration: none; }
+  .empty-feed { text-align: center; color: var(--muted); font-size: 13px; padding: 30px 0; }
+  .tabbar {
+    position: fixed; bottom: 0; left: 0; right: 0; background: var(--card);
+    border-top: 1px solid var(--line); display: flex; max-width: 480px; margin: 0 auto;
+  }
+  .tab {
+    flex: 1; text-align: center; padding: 12px 0 10px; color: var(--muted);
+    font-size: 12px; cursor: pointer; border: none; background: none; font-family: inherit;
+  }
+  .tab .icon { font-size: 18px; display: block; margin-bottom: 2px; }
+  .tab.active { color: var(--occasion); }
+  .modal-overlay {
+    position: fixed; inset: 0; background: rgba(0,0,0,0.6); display: flex;
+    align-items: flex-end; z-index: 50;
+  }
+  .modal {
+    background: var(--card); width: 100%; max-width: 480px; margin: 0 auto;
+    border-radius: 20px 20px 0 0; padding: 22px 18px 28px;
+  }
+  .modal h3 { margin-bottom: 14px; }
+  textarea {
+    width: 100%; background: var(--bg); border: 1px solid var(--line); border-radius: 10px;
+    padding: 12px 14px; color: var(--text); font-family: inherit; font-size: 14px; min-height: 80px; resize: vertical;
+  }
+  .type-picker { display: flex; gap: 8px; margin-bottom: 14px; }
+  .type-pick {
+    flex: 1; padding: 10px; text-align: center; border-radius: 10px; border: 1px solid var(--line);
+    font-size: 13px; cursor: pointer; color: var(--muted);
+  }
+  .type-pick.sel-فرح.active { background: var(--occasion-dim); border-color: var(--occasion); color: var(--occasion); }
+  .type-pick.sel-وفاة.active { background: #3A2E38; border-color: var(--muted); color: var(--text); }
+  .type-pick.sel-طارئ.active { background: var(--sos-dim); border-color: var(--sos); color: var(--sos); }
+  .member-row {
+    display: flex; justify-content: space-between; align-items: center;
+    background: var(--card); border-radius: 12px; padding: 12px 14px; margin-bottom: 8px;
+  }
+  .member-row .info { display: flex; align-items: center; gap: 10px; }
+  .member-row .name { font-size: 14px; font-weight: 600; }
+  .member-row .rel { font-size: 11px; color: var(--muted); }
+  .trust-toggle {
+    font-size: 11px; padding: 5px 10px; border-radius: 8px; border: 1px solid var(--line);
+    color: var(--muted); cursor: pointer; background: none;
+  }
+  .trust-toggle.on { border-color: var(--safe); color: var(--safe); }
+  .note-box {
+    background: rgba(212,166,87,0.08); border: 1px solid rgba(212,166,87,0.25);
+    border-radius: 12px; padding: 12px 14px; font-size: 12px; color: var(--muted); line-height: 1.7; margin-top: 18px;
+  }
+  .hidden { display: none !important; }
+
+  /* ---- Admin panel (hidden control panel) ---- */
+  .admin-wrap { max-width: 480px; margin: 0 auto; padding: 20px 16px 60px; }
+  .admin-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px; }
+  .admin-header h2 { font-size: 20px; }
+  .admin-logout { font-size: 12px; color: var(--muted); background: none; border: 1px solid var(--line); border-radius: 8px; padding: 6px 10px; cursor: pointer; }
+  .admin-stats { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; margin-bottom: 22px; }
+  .admin-stat { background: var(--card); border-radius: 12px; padding: 12px 8px; text-align: center; }
+  .admin-stat .num { font-size: 20px; font-weight: 900; font-family: 'El Messiri', sans-serif; color: var(--occasion); }
+  .admin-stat .lbl { font-size: 10.5px; color: var(--muted); margin-top: 2px; }
+  .admin-tabs { display: flex; gap: 8px; margin-bottom: 14px; }
+  .admin-tab-btn { flex: 1; padding: 9px; border-radius: 10px; border: 1px solid var(--line); background: none; color: var(--muted); font-family: inherit; font-size: 13px; cursor: pointer; }
+  .admin-tab-btn.active { background: var(--occasion-dim); border-color: var(--occasion); color: var(--occasion); }
+  .admin-fam-row { background: var(--card); border-radius: 12px; padding: 12px 14px; margin-bottom: 8px; cursor: pointer; }
+  .admin-fam-row .code { font-weight: 700; font-family: 'El Messiri', sans-serif; letter-spacing: 2px; }
+  .admin-fam-row .meta { font-size: 11.5px; color: var(--muted); margin-top: 3px; }
+  .admin-back { font-size: 13px; color: var(--occasion); cursor: pointer; margin-bottom: 12px; display: inline-block; }
+  .admin-del-btn { font-size: 11px; padding: 5px 10px; border-radius: 8px; border: 1px solid var(--sos); color: var(--sos); background: none; cursor: pointer; }
+  .admin-login-box { text-align: center; padding-top: 40%; }
+  .admin-login-box input { text-align: center; letter-spacing: 2px; }
+  .admin-event-row { background: var(--card); border-radius: 12px; padding: 10px 14px; margin-bottom: 8px; font-size: 13px; }
+  .admin-event-row .code { color: var(--occasion); font-weight: 700; }
+</style>
+
+<script>
+let familyCode = null;
+let myId = null;
+let familyData = null;
+let eventsData = [];
+let chatMessages = [];
+let selectedOccasionType = 'فرح';
+let pollTimer = null;
+
+const $ = id => document.getElementById(id);
+const show = el => el.classList.remove('hidden');
+const hide = el => el.classList.add('hidden');
+
+function genId() { return 'm_' + Math.random().toString(36).slice(2,10); }
+function initials(name) { return name.trim().split(' ').map(w=>w[0]).slice(0,2).join(''); }
+function timeAgo(ts) {
+  const diff = Math.floor((Date.now() - ts) / 1000);
+  if (diff < 60) return 'الآن';
+  if (diff < 3600) return Math.floor(diff/60) + ' د';
+  if (diff < 86400) return Math.floor(diff/3600) + ' س';
+  return Math.floor(diff/86400) + ' يوم';
+}
+function formatTime(ts) {
+  const d = new Date(ts);
+  return d.getHours().toString().padStart(2,'0') + ':' + d.getMinutes().toString().padStart(2,'0');
+}
+
+// ---------- Storage (Cloudflare Worker API) ----------
+// غيّر السطر ده لرابط الـ Worker بتاعك بعد النشر (وردة عليها .workers.dev)
+const API_BASE = 'https://daera-alaman-api.YOUR-SUBDOMAIN.workers.dev';
+
+async function apiCall(path, options) {
+  const res = await fetch(API_BASE + path, {
+    headers: { 'Content-Type': 'application/json' },
+    ...options,
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(data.error || 'حصل خطأ في الاتصال بالسيرفر');
+  return data;
+}
+
+async function loadFamily(code) {
+  try {
+    const data = await apiCall('/api/family/' + code, { method: 'GET' });
+    return data.family || null;
+  } catch(e) { return null; }
+}
+
+async function saveEvent(code, evt) {
+  await apiCall('/api/events/' + code, { method: 'POST', body: JSON.stringify(evt) });
+}
+
+async function loadEvents(code, limit) {
+  limit = limit || 60;
+  try {
+    const data = await apiCall('/api/events/' + code + '?limit=' + limit, { method: 'GET' });
+    return data.events || [];
+  } catch(e) { return []; }
+}
+
+async function saveChatMsg(code, msg) {
+  await apiCall('/api/chat/' + code, {
+    method: 'POST',
+    body: JSON.stringify({ senderId: msg.senderId, senderName: msg.senderName, text: msg.text }),
+  });
+}
+
+async function loadChat(code, limit) {
+  limit = limit || 100;
+  try {
+    const data = await apiCall('/api/chat/' + code + '?limit=' + limit, { method: 'GET' });
+    return data.messages || [];
+  } catch(e) { return []; }
+}
+
+async function uploadChatMedia(code, payload) {
+  // payload: { senderId, senderName, mediaType, base64 (data URL), ext, contentType }
+  return apiCall('/api/chat/' + code + '/media', { method: 'POST', body: JSON.stringify(payload) });
+}
+
+// تفضيلات الصوت شخصية للجهاز - بتتخزن محليًا في المتصفح بتاع كل جهاز
+// (مش محتاجة تتشارك مع باقي العيلة، فمفيش داعي للسيرفر هنا)
+async function loadSoundPrefs() {
+  try {
+    const raw = document.cookie.split('; ').find(r => r.startsWith('soundPrefs='));
+    if (raw) return JSON.parse(decodeURIComponent(raw.split('=')[1]));
+  } catch(e) {}
+  return { sosTone: 'siren', safeTone: 'chime', customSos: null, customSafe: null };
+}
+async function saveSoundPrefs(prefs) {
+  try {
+    document.cookie = 'soundPrefs=' + encodeURIComponent(JSON.stringify(prefs)) + '; max-age=31536000; path=/';
+  } catch(e) {}
+}
+
+async function pushEvent(evt) {
+  await saveEvent(familyCode, evt);
+  eventsData = await loadEvents(familyCode);
+  renderFeed();
+}
+
+async function pushChatMessage(msg) {
+  await saveChatMsg(familyCode, msg);
+  chatMessages = await loadChat(familyCode);
+  renderChat();
+}
+
+
+// موقع دقيق: بيطلب أعلى دقة ممكنة من الـ GPS، وبيرجع نصف قطر الخطأ بالمتر
+// (مهم وقت الطوارئ - الموقع العادي ممكن يكون غلطه مئات الأمتار، ده بيحاول يقلل الفرق)
+function getLocation(highAccuracy) {
+  return new Promise(resolve => {
+    if (!navigator.geolocation) return resolve(null);
+    navigator.geolocation.getCurrentPosition(
+      pos => resolve({
+        lat: pos.coords.latitude,
+        lng: pos.coords.longitude,
+        accuracy: Math.round(pos.coords.accuracy)
+      }),
+      () => resolve(null),
+      highAccuracy
+        ? { enableHighAccuracy: true, maximumAge: 0, timeout: 15000 }
+        : { enableHighAccuracy: false, maximumAge: 30000, timeout: 8000 }
+    );
+  });
+}
+
+let soundPrefs = { sosTone: 'siren', safeTone: 'chime', customSos: null, customSafe: null };
+
+// أنماط الإنذار المدمجة - مختلفة تمامًا عن بعض عشان محدش يلخبط بينهم
+const ALERT_TONES = {
+  siren:  { freqs: [660, 880], pattern: 'wail', reps: 4, gain: 0.35 },
+  klaxon: { freqs: [440], pattern: 'pulse', reps: 6, gain: 0.35 },
+  bell:   { freqs: [1046, 784], pattern: 'ring', reps: 3, gain: 0.3 },
+  chime:  { freqs: [523, 659, 784], pattern: 'chime', reps: 1, gain: 0.2 },
+  soft:   { freqs: [392], pattern: 'soft', reps: 2, gain: 0.15 }
+};
+
+function playTone(ctx, freq, start, dur, gainVal, type) {
+  const osc = ctx.createOscillator();
+  const gain = ctx.createGain();
+  osc.type = type || 'sine';
+  osc.frequency.value = freq;
+  gain.gain.setValueAtTime(0.0001, start);
+  gain.gain.linearRampToValueAtTime(gainVal, start + 0.03);
+  gain.gain.exponentialRampToValueAtTime(0.001, start + dur);
+  osc.connect(gain); gain.connect(ctx.destination);
+  osc.start(start); osc.stop(start + dur + 0.02);
+}
+
+function playBuiltInTone(toneKey) {
+  const tone = ALERT_TONES[toneKey] || ALERT_TONES.siren;
+  try {
+    const ctx = new (window.AudioContext || window.webkitAudioContext)();
+    const now = ctx.currentTime;
+    let t = 0;
+    for (let r = 0; r < tone.reps; r++) {
+      if (tone.pattern === 'wail') {
+        playTone(ctx, tone.freqs[0], now + t, 0.35, tone.gain, 'sawtooth');
+        playTone(ctx, tone.freqs[1], now + t + 0.35, 0.35, tone.gain, 'sawtooth');
+        t += 0.75;
+      } else if (tone.pattern === 'pulse') {
+        playTone(ctx, tone.freqs[0], now + t, 0.18, tone.gain, 'square');
+        t += 0.32;
+      } else if (tone.pattern === 'ring') {
+        playTone(ctx, tone.freqs[0], now + t, 0.4, tone.gain, 'triangle');
+        playTone(ctx, tone.freqs[1], now + t + 0.15, 0.35, tone.gain*0.8, 'triangle');
+        t += 0.7;
+      } else if (tone.pattern === 'chime') {
+        tone.freqs.forEach((f, i) => playTone(ctx, f, now + t + i*0.12, 0.5, tone.gain, 'sine'));
+        t += 0.6;
+      } else {
+        playTone(ctx, tone.freqs[0], now + t, 0.5, tone.gain, 'sine');
+        t += 0.7;
+      }
+    }
+  } catch(e) {}
+}
+
+function playAlertSound(kind) {
+  // kind: 'sos' أو 'safe' - كل واحد بياخد الصوت والاهتزاز المناسب له من تفضيلات الجهاز ده
+  const customUrl = kind === 'sos' ? soundPrefs.customSos : soundPrefs.customSafe;
+  const tone = kind === 'sos' ? soundPrefs.sosTone : soundPrefs.safeTone;
+
+  if (customUrl) {
+    try {
+      const audio = new Audio(customUrl);
+      audio.volume = 1.0;
+      if (kind === 'sos') {
+        let plays = 0;
+        audio.onended = () => { plays++; if (plays < 3) audio.play().catch(()=>{}); };
+      }
+      audio.play().catch(() => playBuiltInTone(tone));
+    } catch(e) { playBuiltInTone(tone); }
+  } else {
+    playBuiltInTone(tone);
+  }
+
+  // اهتزاز - شغال على أندرويد، آيفون مش بيدعمه في المتصفح
+  if (navigator.vibrate) {
+    navigator.vibrate(kind === 'sos' ? [400,150,400,150,400,150,400] : [120,80,120]);
+  }
+}
+
+// ---------- Tabs ----------
+$('loginTabBtn').onclick = () => {
+  $('loginTabBtn').classList.add('active');
+  $('registerTabBtn').classList.remove('active');
+  show($('loginTabContent'));
+  hide($('registerTabContent'));
+};
+$('registerTabBtn').onclick = () => {
+  $('registerTabBtn').classList.add('active');
+  $('loginTabBtn').classList.remove('active');
+  hide($('loginTabContent'));
+  show($('registerTabContent'));
+};
+
+// ---------- Login (Existing Member) ----------
+$('loginSubmit').onclick = async () => {
+  const code = $('loginCode').value.trim().toUpperCase();
+  const phone = $('loginPhoneOnly').value.trim();
+  
+  if (!code || !phone) {
+    alert('من فضلك اكتب كود العائلة ورقم الهاتف');
+    return;
+  }
+
+  const btn = $('loginSubmit');
+  const originalText = btn.textContent;
+  btn.disabled = true;
+  btn.textContent = 'جاري الدخول...';
+  hide($('loginError'));
+
+  try {
+    const result = await apiCall('/api/family/login', {
+      method: 'POST',
+      body: JSON.stringify({ code, phone }),
+    });
+
+    familyCode = code;
+    myId = result.myId;
+    familyData = result.family;
+
+    hide($('loginScreen'));
+    await startApp();
+  } catch (err) {
+    console.error('loginSubmit error:', err);
+    show($('loginError'));
+  } finally {
+    btn.disabled = false;
+    btn.textContent = originalText;
+  }
+};
+
+// ---------- Register (New Member) ----------
+$('registerSubmit').onclick = async () => {
+  const code = $('registerCode').value.trim().toUpperCase();
+  const name = $('registerName').value.trim();
+  const phone = $('registerPhone').value.trim();
+  const relation = $('registerRelation').value;
+  
+  if (!code || !name || !phone) {
+    alert('من فضلك اكمل كل البيانات');
+    return;
+  }
+
+  const btn = $('registerSubmit');
+  const originalText = btn.textContent;
+  btn.disabled = true;
+  btn.textContent = 'جاري التسجيل...';
+  hide($('registerError'));
+
+  try {
+    const result = await apiCall('/api/family/register', {
+      method: 'POST',
+      body: JSON.stringify({ code, name, phone, relation }),
+    });
+
+    familyCode = code;
+    myId = result.myId;
+    familyData = result.family;
+
+    await pushEvent({
+      id: 'e_'+Date.now(), type: 'join', memberId: myId, memberName: name,
+      text: 'انضم إلى أمان العيلة', timestamp: Date.now()
+    });
+
+    hide($('loginScreen'));
+    await startApp();
+  } catch (err) {
+    console.error('registerSubmit error:', err);
+    $('registerError').textContent = '⚠️ ' + (err && err.message ? err.message : 'حصل خطأ في الاتصال، جرب تاني.');
+    show($('registerError'));
+  } finally {
+    btn.disabled = false;
+    btn.textContent = originalText;
+  }
+};
+
+// ---------- Create Family ----------
+$('createFamilyBtn').onclick = () => {
+  hide($('loginScreen'));
+  show($('createFamilyScreen'));
+  $('newFamilyCode').textContent = 'هيظهر بعد الإنشاء';
+};
+
+$('backFromCreateFamily').onclick = () => {
+  hide($('createFamilyScreen'));
+  show($('loginScreen'));
+};
+
+$('createFamilySubmit').onclick = async () => {
+  const name = $('newFamilyName').value.trim();
+  const phone = $('newFamilyPhone').value.trim();
+  const relation = $('newFamilyRelation').value;
+
+  if (!name || !phone) {
+    alert('من فضلك اكمل كل البيانات');
+    return;
+  }
+
+  const btn = $('createFamilySubmit');
+  const originalText = btn.textContent;
+  btn.disabled = true;
+  btn.textContent = 'جاري الإنشاء...';
+  hide($('createFamilyError'));
+
+  try {
+    const result = await apiCall('/api/family/create', {
+      method: 'POST',
+      body: JSON.stringify({ name, phone, relation }),
+    });
+
+    familyCode = result.family.code;
+    myId = result.myId;
+    familyData = result.family;
+    $('newFamilyCode').textContent = familyCode;
+
+    hide($('createFamilyScreen'));
+    await startApp();
+  } catch (err) {
+    console.error('createFamilySubmit error:', err);
+    $('createFamilyError').textContent = '⚠️ ' + (err && err.message ? err.message : 'حصل خطأ في الاتصال، جرب تاني كمان شوية.');
+    show($('createFamilyError'));
+  } finally {
+    btn.disabled = false;
+    btn.textContent = originalText;
+  }
+};
+
+// ---------- Main App ----------
+async function startApp() {
+  familyData = await loadFamily(familyCode);
+  eventsData = await loadEvents(familyCode);
+  chatMessages = await loadChat(familyCode);
+  soundPrefs = await loadSoundPrefs();
+  if (!familyData) { show($('loginScreen')); return; }
+  
+  const me = familyData.members.find(m => m.id === myId);
+  $('greeting').textContent = 'أهلاً، ' + (me ? me.name.split(' ')[0] : '');
+  $('famCodeSmall').textContent = familyCode;
+  
+  show($('mainScreen'));
+  renderCircle();
+  renderFeed();
+  renderMembers();
+  renderChat();
+  
+  if (pollTimer) clearInterval(pollTimer);
+  pollTimer = setInterval(refreshData, 5000);
+}
+
+async function refreshData() {
+  const newFamily = await loadFamily(familyCode);
+  const newEvents = await loadEvents(familyCode);
+  const newChat = await loadChat(familyCode);
+  
+  if (newEvents.length && eventsData.length && newEvents[0].id !== eventsData[0].id) {
+    if (newEvents[0].memberId !== myId) {
+      if (newEvents[0].type === 'sos') playAlertSound('sos');
+      else if (newEvents[0].type === 'safe') playAlertSound('safe');
+    }
+  }
+  
+  if (newChat.length !== chatMessages.length) {
+    chatMessages = newChat;
+    renderChat();
+  }
+  
+  familyData = newFamily || familyData;
+  eventsData = newEvents;
+  renderCircle();
+  renderFeed();
+  renderMembers();
+  $('lastUpdate').textContent = 'محدّث الآن';
+}
+
+function renderCircle() {
+  const row = $('circleRow');
+  row.innerHTML = '';
+  if (!familyData || !familyData.members) return;
+  familyData.members.forEach(m => {
+    const div = document.createElement('div');
+    div.className = 'avatar';
+    const isMe = m.id === myId;
+    div.innerHTML = `<div class="bubble ${m.role==='parent'?'parent':''} ${isMe?'me':''}">${initials(m.name)}</div><div>${m.name.split(' ')[0]}</div>`;
+    row.appendChild(div);
+  });
+}
+
+function renderFeed() {
+  const list = $('feedList');
+  if (!eventsData || !eventsData.length) {
+    list.innerHTML = '<div class="empty-feed">مفيش تحديثات لسه. أول تنبيه أو رسالة هتظهر هنا لكل العائلة.</div>';
+    return;
+  }
+  list.innerHTML = '';
+  eventsData.forEach(e => {
+    const div = document.createElement('div');
+    div.className = 'feed-item ' + e.type;
+    let icon = e.type === 'sos' ? '🚨' : e.type === 'safe' ? '✅' : e.type === 'join' ? '👋' : (e.occasionType==='فرح'?'🎉':e.occasionType==='وفاة'?'🕊️':'📣');
+    let title = e.type === 'sos' ? 'يحتاج مساعدة' : e.type === 'safe' ? 'وصل بأمان' : e.type === 'join' ? 'عضو جديد' : e.occasionType;
+    let locHtml = '';
+    if (e.lat) {
+      const accTxt = e.accuracy ? ` (دقة ~${e.accuracy} م)` : '';
+      locHtml = `<a class="loc-link" href="https://maps.google.com/?q=${e.lat},${e.lng}" target="_blank">📍 عرض الموقع على الخريطة${accTxt}</a>`;
+    }
+    div.innerHTML = `
+      <div class="row1">
+        <span class="who">${icon} ${e.memberName} · ${title}</span>
+        <span class="when">${timeAgo(e.timestamp)}</span>
+      </div>
+      <div class="msg">${e.text || ''}</div>
+      ${locHtml}
+    `;
+    list.appendChild(div);
+  });
+}
+
+function renderMembers() {
+  const list = $('memberList');
+  list.innerHTML = '';
+  if (!familyData || !familyData.members) return;
+  const me = familyData.members.find(m => m.id === myId);
+  const iAmAdmin = me && me.isAdmin;
+
+  familyData.members.forEach(m => {
+    if (m.id === myId) return;
+    const div = document.createElement('div');
+    div.className = 'member-row';
+    const isParent = m.role === 'parent';
+    const inCircle = me && me.circle && me.circle.includes(m.id);
+    let rightHtml = '';
+    if (!isParent && me && me.role !== 'parent') {
+      rightHtml += `<button class="trust-toggle ${inCircle?'on':''}" data-id="${m.id}">${inCircle ? '✓ في دائرتي' : 'أضف لدائرتي'}</button>`;
+    } else if (isParent) {
+      rightHtml += `<span style="font-size:11px;color:var(--occasion);">دائرتك دايمًا</span>`;
+    }
+    if (iAmAdmin) {
+      rightHtml += `<button class="remove-btn" data-remove="${m.id}" data-name="${m.name}" style="margin-right:6px;">حذف</button>`;
+    }
+    div.innerHTML = `
+      <div class="info">
+        <div class="bubble" style="width:36px;height:36px;font-size:12px;">${initials(m.name)}</div>
+        <div><div class="name">${m.isAdmin ? '<span class=\"admin-badge\">كبير العائلة</span>' : ''}${m.name}</div><div class="rel">${m.relation}</div></div>
+      </div>
+      <div style="display:flex; align-items:center;">${rightHtml}</div>
+    `;
+    list.appendChild(div);
+  });
+
+  list.querySelectorAll('.trust-toggle').forEach(btn => {
+    btn.onclick = async () => {
+      const id = btn.dataset.id;
+      const me = familyData.members.find(m => m.id === myId);
+      if (!me.circle) me.circle = [];
+      const idx = me.circle.indexOf(id);
+      if (idx >= 0) me.circle.splice(idx,1); else me.circle.push(id);
+      try {
+        const result = await apiCall('/api/family/circle', {
+          method: 'POST',
+          body: JSON.stringify({ code: familyCode, memberId: myId, circle: me.circle }),
+        });
+        familyData = result.family;
+      } catch(e) { console.error('circle update failed:', e); }
+      renderMembers();
+    };
+  });
+
+  list.querySelectorAll('[data-remove]').forEach(btn => {
+    btn.onclick = async () => {
+      const id = btn.dataset.remove;
+      const name = btn.dataset.name;
+      if (!confirm(`متأكد إنك عايز تحذف ${name} من العائلة؟`)) return;
+      try {
+        const result = await apiCall('/api/family/remove', {
+          method: 'POST',
+          body: JSON.stringify({ code: familyCode, memberId: id, requestedByAdminId: myId }),
+        });
+        familyData = result.family;
+        await pushEvent({
+          id: 'e_'+Date.now(), type: 'join', memberId: myId, memberName: name,
+          text: 'تم إزالته من أمان العيلة', timestamp: Date.now()
+        });
+        renderMembers();
+        renderCircle();
+      } catch(e) {
+        alert('حصل خطأ: ' + e.message);
+      }
+    };
+  });
+}
+
+// ---------- Chat ----------
+function renderChat() {
+  const container = $('chatContainer');
+  if (!chatMessages || !chatMessages.length) {
+    container.innerHTML = '<div style="text-align:center;color:var(--muted);font-size:13px;padding:30px 0;">💬 ابدأ المحادثة العائلية</div>';
+    return;
+  }
+  container.innerHTML = '';
+  chatMessages.forEach(msg => {
+    const div = document.createElement('div');
+    div.className = 'chat-msg';
+    if (msg.senderId === myId) div.classList.add('me');
+    let bodyHtml = '';
+    if (msg.mediaType === 'image') {
+      bodyHtml = `<img src="${msg.media}" alt="صورة">`;
+    } else if (msg.mediaType === 'audio') {
+      bodyHtml = `<audio controls src="${msg.media}"></audio>`;
+    } else if (msg.mediaType === 'video') {
+      bodyHtml = `<video controls src="${msg.media}"></video>`;
+    }
+    div.innerHTML = `
+      <div class="sender">${msg.senderName}</div>
+      ${msg.text ? `<div class="text">${msg.text}</div>` : ''}
+      ${bodyHtml}
+      <div class="time">${formatTime(msg.timestamp)}</div>
+    `;
+    container.appendChild(div);
+  });
+  container.scrollTop = container.scrollHeight;
+}
+
+$('chatSendBtn').onclick = async () => {
+  const input = $('chatInput');
+  const text = input.value.trim();
+  if (!text) return;
+  
+  const me = familyData.members.find(m => m.id === myId);
+  await pushChatMessage({
+    id: 'c_'+Date.now()+'_'+Math.random().toString(36).slice(2,6),
+    senderId: myId,
+    senderName: me.name,
+    text: text,
+    timestamp: Date.now()
+  });
+  input.value = '';
+};
+
+$('chatInput').addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') $('chatSendBtn').click();
+});
+
+// ---------- Media messages ----------
+function compressImage(file, maxWidth) {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    const reader = new FileReader();
+    reader.onload = () => { img.src = reader.result; };
+    reader.onerror = reject;
+    img.onload = () => {
+      const scale = Math.min(1, maxWidth / img.width);
+      const canvas = document.createElement('canvas');
+      canvas.width = img.width * scale;
+      canvas.height = img.height * scale;
+      const ctx = canvas.getContext('2d');
+      ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+      resolve(canvas.toDataURL('image/jpeg', 0.6));
+    };
+    img.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+}
+function fileToDataUrlChat(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+}
+
+function extFromMime(mime) {
+  const map = { 'image/jpeg':'jpg','image/png':'png','image/webp':'webp','audio/mpeg':'mp3','audio/mp4':'m4a','audio/webm':'webm','audio/aac':'aac','video/mp4':'mp4','video/quicktime':'mov','video/webm':'webm' };
+  return map[mime] || 'bin';
+}
+
+$('photoBtn').onclick = () => $('photoInput').click();
+$('audioBtn').onclick = () => $('audioInput').click();
+$('videoBtn').onclick = () => $('videoInput').click();
+
+$('photoInput').onchange = async (e) => {
+  const file = e.target.files[0];
+  e.target.value = '';
+  if (!file) return;
+  $('mediaUploadStatus').textContent = 'جاري ضغط ورفع الصورة...';
+  try {
+    const dataUrl = await compressImage(file, 900);
+    const me = familyData.members.find(m => m.id === myId);
+    await uploadChatMedia(familyCode, {
+      senderId: myId, senderName: me.name, mediaType: 'image',
+      base64: dataUrl, ext: 'jpg', contentType: 'image/jpeg',
+    });
+    chatMessages = await loadChat(familyCode);
+    renderChat();
+    $('mediaUploadStatus').textContent = '';
+  } catch(err) {
+    console.error(err);
+    $('mediaUploadStatus').textContent = 'حصل خطأ في رفع الصورة، جرب تاني.';
+  }
+};
+
+$('audioInput').onchange = async (e) => {
+  const file = e.target.files[0];
+  e.target.value = '';
+  if (!file) return;
+  if (file.size > 15000000) {
+    $('mediaUploadStatus').textContent = '⚠️ التسجيل كبير أوي (أكتر من 15 ميجا)، جرب تسجيل أقصر.';
+    return;
+  }
+  $('mediaUploadStatus').textContent = 'جاري رفع التسجيل...';
+  try {
+    const dataUrl = await fileToDataUrlChat(file);
+    const me = familyData.members.find(m => m.id === myId);
+    await uploadChatMedia(familyCode, {
+      senderId: myId, senderName: me.name, mediaType: 'audio',
+      base64: dataUrl, ext: extFromMime(file.type), contentType: file.type || 'audio/mpeg',
+    });
+    chatMessages = await loadChat(familyCode);
+    renderChat();
+    $('mediaUploadStatus').textContent = '';
+  } catch(err) {
+    console.error(err);
+    $('mediaUploadStatus').textContent = 'حصل خطأ في رفع التسجيل، جرب تاني.';
+  }
+};
+
+$('videoInput').onchange = async (e) => {
+  const file = e.target.files[0];
+  e.target.value = '';
+  if (!file) return;
+  if (file.size > 40000000) {
+    $('mediaUploadStatus').textContent = '⚠️ الفيديو كبير أوي (أكتر من 40 ميجا). سجل فيديو أقصر.';
+    return;
+  }
+  $('mediaUploadStatus').textContent = 'جاري رفع الفيديو... ممكن ياخد لحظات حسب حجمه';
+  try {
+    const dataUrl = await fileToDataUrlChat(file);
+    const me = familyData.members.find(m => m.id === myId);
+    await uploadChatMedia(familyCode, {
+      senderId: myId, senderName: me.name, mediaType: 'video',
+      base64: dataUrl, ext: extFromMime(file.type), contentType: file.type || 'video/mp4',
+    });
+    chatMessages = await loadChat(familyCode);
+    renderChat();
+    $('mediaUploadStatus').textContent = '';
+  } catch(err) {
+    console.error(err);
+    $('mediaUploadStatus').textContent = 'حصل خطأ في رفع الفيديو، جرب تاني.';
+  }
+};
+
+// ---------- Actions ----------
+$('sosBtn').onclick = async () => {
+  const me = familyData.members.find(m => m.id === myId);
+  playAlertSound('sos');
+  $('sosBtn').disabled = true;
+  const prevText = $('sosBtn').innerHTML;
+  $('sosBtn').innerHTML = '<span class="icon">📍</span>جاري تحديد موقعك بدقة...';
+  const loc = await getLocation(true);
+  $('sosBtn').disabled = false;
+  $('sosBtn').innerHTML = prevText;
+  await pushEvent({
+    id: 'e_'+Date.now(), type: 'sos', memberId: myId, memberName: me.name,
+    text: 'محتاج مساعدة فورية', lat: loc?loc.lat:null, lng: loc?loc.lng:null,
+    accuracy: loc?loc.accuracy:null, timestamp: Date.now()
+  });
+};
+
+$('safeBtn').onclick = async () => {
+  const me = familyData.members.find(m => m.id === myId);
+  const loc = await getLocation(true);
+  await pushEvent({
+    id: 'e_'+Date.now(), type: 'safe', memberId: myId, memberName: me.name,
+    text: 'وصلت بأمان', lat: loc?loc.lat:null, lng: loc?loc.lng:null,
+    accuracy: loc?loc.accuracy:null, timestamp: Date.now()
+  });
+};
+
+$('occasionBtn').onclick = () => show($('occasionModal'));
+$('occasionCancel').onclick = () => hide($('occasionModal'));
+document.querySelectorAll('.type-pick').forEach(el => {
+  el.onclick = () => {
+    document.querySelectorAll('.type-pick').forEach(x=>x.classList.remove('active'));
+    el.classList.add('active');
+    selectedOccasionType = el.dataset.type;
+  };
+});
+document.querySelector('.type-pick[data-type="فرح"]').classList.add('active');
+
+$('occasionSubmit').onclick = async () => {
+  const text = $('occasionText').value.trim();
+  if (!text) { alert('اكتب تفاصيل المناسبة'); return; }
+  const me = familyData.members.find(m => m.id === myId);
+  await pushEvent({
+    id: 'e_'+Date.now(), type: 'occasion', occasionType: selectedOccasionType,
+    memberId: myId, memberName: me.name, text, timestamp: Date.now()
+  });
+  $('occasionText').value = '';
+  hide($('occasionModal'));
+};
+
+// ---------- Tabs ----------
+$('tabHomeBtn').onclick = () => {
+  show($('homeTab')); hide($('chatTab')); hide($('familyTab')); hide($('settingsTab'));
+  $('tabHomeBtn').classList.add('active');
+  $('tabChatBtn').classList.remove('active');
+  $('tabFamilyBtn').classList.remove('active');
+  $('tabSettingsBtn').classList.remove('active');
+};
+$('tabChatBtn').onclick = () => {
+  hide($('homeTab')); show($('chatTab')); hide($('familyTab')); hide($('settingsTab'));
+  $('tabHomeBtn').classList.remove('active');
+  $('tabChatBtn').classList.add('active');
+  $('tabFamilyBtn').classList.remove('active');
+  $('tabSettingsBtn').classList.remove('active');
+  renderChat();
+};
+$('tabFamilyBtn').onclick = () => {
+  hide($('homeTab')); hide($('chatTab')); show($('familyTab')); hide($('settingsTab'));
+  $('tabHomeBtn').classList.remove('active');
+  $('tabChatBtn').classList.remove('active');
+  $('tabFamilyBtn').classList.add('active');
+  $('tabSettingsBtn').classList.remove('active');
+  renderMembers();
+};
+$('tabSettingsBtn').onclick = () => {
+  hide($('homeTab')); hide($('chatTab')); hide($('familyTab')); show($('settingsTab'));
+  $('tabHomeBtn').classList.remove('active');
+  $('tabChatBtn').classList.remove('active');
+  $('tabFamilyBtn').classList.remove('active');
+  $('tabSettingsBtn').classList.add('active');
+  $('sosToneSelect').value = soundPrefs.sosTone;
+  $('safeToneSelect').value = soundPrefs.safeTone;
+  $('sosCustomStatus').textContent = soundPrefs.customSos ? '✓ فيه نغمة مرفوعة حاليًا' : '';
+  $('safeCustomStatus').textContent = soundPrefs.customSafe ? '✓ فيه نغمة مرفوعة حاليًا' : '';
+};
+
+// ---------- Sound settings ----------
+$('testSosTone').onclick = () => playBuiltInTone($('sosToneSelect').value);
+$('testSafeTone').onclick = () => playBuiltInTone($('safeToneSelect').value);
+
+function fileToDataUrl(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+}
+
+let pendingCustomSos = undefined;
+let pendingCustomSafe = undefined;
+
+$('sosCustomFile').onchange = async (e) => {
+  const file = e.target.files[0];
+  if (!file) return;
+  if (file.size > 800000) { alert('الملف كبير أوي، اختار ملف أصغر من 800 كيلوبايت'); e.target.value=''; return; }
+  pendingCustomSos = await fileToDataUrl(file);
+  $('sosCustomStatus').textContent = '✓ ' + file.name + ' - دوس حفظ التفضيلات';
+};
+$('safeCustomFile').onchange = async (e) => {
+  const file = e.target.files[0];
+  if (!file) return;
+  if (file.size > 800000) { alert('الملف كبير أوي، اختار ملف أصغر من 800 كيلوبايت'); e.target.value=''; return; }
+  pendingCustomSafe = await fileToDataUrl(file);
+  $('safeCustomStatus').textContent = '✓ ' + file.name + ' - دوس حفظ التفضيلات';
+};
+
+$('saveSoundPrefs').onclick = async () => {
+  soundPrefs.sosTone = $('sosToneSelect').value;
+  soundPrefs.safeTone = $('safeToneSelect').value;
+  if (pendingCustomSos !== undefined) soundPrefs.customSos = pendingCustomSos;
+  if (pendingCustomSafe !== undefined) soundPrefs.customSafe = pendingCustomSafe;
+  await saveSoundPrefs(soundPrefs);
+  pendingCustomSos = undefined; pendingCustomSafe = undefined;
+  alert('اتحفظت التفضيلات ✓');
+};
+
+// ---------- Admin panel (hidden control panel) ----------
+// يتفتح بالضغط 3 مرات متتالية بسرعة على عنوان "أمان العيلة" في شاشة الدخول.
+// مفيش أي زرار أو إشارة ظاهرة للزوار، والدخول محمي بمفتاح إدارة (ADMIN_KEY) بيتخزن في الـ Worker.
+let adminClickCount = 0;
+let adminClickTimer = null;
+let adminKey = sessionStorage.getItem('adminKey') || '';
+let adminActiveFamily = null;
+
+$('loginTitle').addEventListener('click', () => {
+  adminClickCount++;
+  clearTimeout(adminClickTimer);
+  adminClickTimer = setTimeout(() => { adminClickCount = 0; }, 800);
+  if (adminClickCount >= 3) {
+    adminClickCount = 0;
+    openAdminScreen();
+  }
+});
+
+async function adminApiCall(path, options) {
+  const res = await fetch(API_BASE + path, {
+    headers: { 'Content-Type': 'application/json', 'x-admin-key': adminKey },
+    ...options,
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(data.error || 'حصل خطأ في الاتصال بالسيرفر');
+  return data;
+}
+
+function openAdminScreen() {
+  hide($('loginScreen')); hide($('mainScreen')); hide($('createFamilyScreen'));
+  show($('adminScreen'));
+  if (adminKey) {
+    tryAdminKey();
+  } else {
+    show($('adminLoginBox')); hide($('adminDashboard'));
+    $('adminKeyInput').value = '';
+    $('adminLoginError').style.display = 'none';
+    $('adminKeyInput').focus();
+  }
+}
+
+function closeAdminScreen() {
+  hide($('adminScreen'));
+  show($('loginScreen'));
+}
+
+$('adminCancelLogin').onclick = closeAdminScreen;
+
+$('adminKeySubmit').onclick = async () => {
+  adminKey = $('adminKeyInput').value.trim();
+  await tryAdminKey();
+};
+$('adminKeyInput').addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') $('adminKeySubmit').click();
+});
+
+async function tryAdminKey() {
+  if (!adminKey) return;
+  try {
+    await adminApiCall('/api/admin/stats', { method: 'GET' });
+    sessionStorage.setItem('adminKey', adminKey);
+    show($('adminDashboard')); hide($('adminLoginBox'));
+    showAdminFamiliesTab();
+    await loadAdminStats();
+    await loadAdminFamilies();
+  } catch (e) {
+    adminKey = '';
+    sessionStorage.removeItem('adminKey');
+    show($('adminLoginBox')); hide($('adminDashboard'));
+    $('adminLoginError').textContent = 'مفتاح غلط، حاول تاني';
+    $('adminLoginError').style.display = 'block';
+  }
+}
+
+$('adminLogoutBtn').onclick = () => {
+  adminKey = '';
+  sessionStorage.removeItem('adminKey');
+  closeAdminScreen();
+};
+
+async function loadAdminStats() {
+  try {
+    const s = await adminApiCall('/api/admin/stats', { method: 'GET' });
+    $('adminStats').innerHTML = `
+      <div class="admin-stat"><div class="num">${s.families}</div><div class="lbl">عائلة</div></div>
+      <div class="admin-stat"><div class="num">${s.members}</div><div class="lbl">عضو</div></div>
+      <div class="admin-stat"><div class="num">${s.events}</div><div class="lbl">حدث</div></div>
+      <div class="admin-stat"><div class="num">${s.messages}</div><div class="lbl">رسالة</div></div>
+      <div class="admin-stat"><div class="num" style="color:var(--sos)">${s.sosAlerts}</div><div class="lbl">تنبيه طارئ</div></div>
+    `;
+  } catch (e) { /* ignore */ }
+}
+
+$('adminTabFamilies').onclick = showAdminFamiliesTab;
+$('adminTabEvents').onclick = showAdminEventsTab;
+
+function showAdminFamiliesTab() {
+  $('adminTabFamilies').classList.add('active');
+  $('adminTabEvents').classList.remove('active');
+  hide($('adminEventsList'));
+  hide($('adminFamilyDetail'));
+  show($('adminFamiliesList'));
+  loadAdminFamilies();
+}
+async function showAdminEventsTab() {
+  $('adminTabEvents').classList.add('active');
+  $('adminTabFamilies').classList.remove('active');
+  hide($('adminFamiliesList'));
+  hide($('adminFamilyDetail'));
+  show($('adminEventsList'));
+  await loadAdminEvents();
+}
+
+async function loadAdminFamilies() {
+  try {
+    const data = await adminApiCall('/api/admin/families', { method: 'GET' });
+    if (!data.families.length) {
+      $('adminFamiliesList').innerHTML = '<div class="empty-feed">مفيش عائلات لسه</div>';
+      return;
+    }
+    $('adminFamiliesList').innerHTML = data.families.map(f => `
+      <div class="admin-fam-row" data-code="${f.code}">
+        <div class="code">${f.code}</div>
+        <div class="meta">${f.admin_name || 'بدون كبير عائلة'} · ${f.member_count} عضو · ${new Date(f.created_at).toLocaleDateString('ar-EG')}</div>
+      </div>
+    `).join('');
+    $('adminFamiliesList').querySelectorAll('.admin-fam-row').forEach(row => {
+      row.onclick = () => openAdminFamilyDetail(row.dataset.code);
+    });
+  } catch (e) { $('adminFamiliesList').innerHTML = '<div class="empty-feed">حصل خطأ</div>'; }
+}
+
+async function openAdminFamilyDetail(code) {
+  adminActiveFamily = code;
+  hide($('adminFamiliesList'));
+  show($('adminFamilyDetail'));
+  $('adminFamilyDetailContent').innerHTML = 'جارِ التحميل...';
+  try {
+    const data = await adminApiCall('/api/admin/family/' + code, { method: 'GET' });
+    const f = data.family;
+    $('adminFamilyDetailContent').innerHTML = `
+      <h3 style="margin-bottom:4px;">كود العائلة: ${f.code}</h3>
+      <div style="color:var(--muted); font-size:12.5px; margin-bottom:14px;">
+        ${data.eventCount} حدث · ${data.messageCount} رسالة · اتعملت في ${new Date(f.createdAt).toLocaleDateString('ar-EG')}
+      </div>
+      <button class="admin-del-btn" id="adminDeleteFamilyBtn" style="margin-bottom:16px;">🗑 حذف العائلة بالكامل</button>
+      <div class="section-title">الأعضاء</div>
+      ${f.members.map(m => `
+        <div class="member-row">
+          <div class="info">
+            <div><div class="name">${m.isAdmin ? '<span class="admin-badge">كبير العائلة</span>' : ''}${m.name}</div><div class="rel">${m.relation} · ${m.phone} · ${m.status === 'pending' ? 'معلّق' : 'مفعّل'}</div></div>
+          </div>
+          <button class="admin-del-btn" data-mid="${m.id}">حذف</button>
+        </div>
+      `).join('')}
+    `;
+    $('adminDeleteFamilyBtn').onclick = async () => {
+      if (!confirm('متأكد إنك عاوز تمسح العائلة دي بكل بياناتها؟ الإجراء ده مش هيترجع.')) return;
+      await adminApiCall('/api/admin/family/' + code, { method: 'DELETE' });
+      showAdminFamiliesTab();
+      loadAdminStats();
+    };
+    $('adminFamilyDetailContent').querySelectorAll('button[data-mid]').forEach(btn => {
+      btn.onclick = async () => {
+        if (!confirm('متأكد إنك عاوز تمسح العضو ده؟')) return;
+        await adminApiCall('/api/admin/member/' + btn.dataset.mid, { method: 'DELETE' });
+        openAdminFamilyDetail(code);
+        loadAdminStats();
+      };
+    });
+  } catch (e) {
+    $('adminFamilyDetailContent').innerHTML = '<div class="empty-feed">حصل خطأ في التحميل</div>';
+  }
+}
+
+$('adminBackToFamilies').onclick = showAdminFamiliesTab;
+
+async function loadAdminEvents() {
+  $('adminEventsList').innerHTML = 'جارِ التحميل...';
+  try {
+    const data = await adminApiCall('/api/admin/events?limit=80', { method: 'GET' });
+    if (!data.events.length) {
+      $('adminEventsList').innerHTML = '<div class="empty-feed">مفيش أحداث لسه</div>';
+      return;
+    }
+    $('adminEventsList').innerHTML = data.events.map(e => `
+      <div class="admin-event-row">
+        <span class="code">${e.familyCode}</span> — ${e.memberName}
+        (${e.type === 'sos' ? '🔴 طارئ' : e.type === 'safe' ? '🟢 اطمئنان' : '🟡 ' + (e.occasionType || 'مناسبة')})
+        ${e.text ? ' — ' + e.text : ''}
+        <div class="admin-event-row" style="background:none;padding:2px 0;color:var(--muted);font-size:11px;">${new Date(e.timestamp).toLocaleString('ar-EG')}</div>
+      </div>
+    `).join('');
+  } catch (e) { $('adminEventsList').innerHTML = '<div class="empty-feed">حصل خطأ</div>'; }
+}
+
+// ---------- Init ----------
+show($('loginScreen'));
+</script>
+</body>
+</html>
