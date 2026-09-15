@@ -1,0 +1,13 @@
+name = "amanaleilah-api"
+main = "worker.js"
+compatibility_date = "2024-09-01"
+
+# هيتحدث تلقائيًا بالأمر اللي هنشغله - سيبها زي ما هي
+[[d1_databases]]
+binding = "DB"
+database_name = "amanaleilah-db"
+database_id = "d7e94ae3-aa22-4e97-ab25-5f06d824f9b9"
+
+[[r2_buckets]]
+binding = "MEDIA"
+bucket_name = "amanaleilah-media"
