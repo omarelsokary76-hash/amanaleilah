@@ -1,0 +1,41 @@
+name = "amanaleilah-api"
+main = "worker.js"
+compatibility_date = "2024-09-01"
+
+# هيتحدث تلقائيًا بالأمر اللي هنشغله - سيبها زي ما هي
+[[d1_databases]]
+binding = "DB"
+database_name = "amanaleilah-db"
+database_id = "d7e94ae3-aa22-4e97-ab25-5f06d824f9b9"
+
+[[r2_buckets]]
+binding = "MEDIA"
+bucket_name = "amanaleilah-media"
+
+# تشغيل كل ساعة: حذف البيانات الأقدم من 30 يوم + تنفيذ طلبات حذف الحساب المؤجلة (24 ساعة) في معادها بدقة معقولة
+[triggers]
+crons = ["0 * * * *"]
+
+# بيانات بتظهر في صفحة سياسة الخصوصية الحية (/privacy-policy) - مش أسرار، عادي تتحط هنا صريحة
+[vars]
+PRIVACY_CONTACT_EMAIL = "your-email@example.com"
+PRIVACY_DEVELOPER_NAME = "اسمك أو اسم شركتك"
+PRIVACY_POLICY_DATE = "2026-09-20"
+
+# ==========================================================================
+# الجزء ده اتشال مؤقتًا عشان مشكلة في النشر - الكود نفسه شغال عادي من غيره
+# (بيرجع لسلوك آمن تلقائيًا لو الـ binding مش موجود). رجّعه لما نتأكد من السبب:
+#
+# [[ratelimits]]
+# name = "AUTH_LIMITER"
+# namespace_id = "1001"
+# simple = { limit = 10, period = 60 }
+#
+# [[durable_objects.bindings]]
+# name = "SOS_ALARM"
+# class_name = "SosAlarm"
+#
+# [[migrations]]
+# tag = "v1"
+# new_classes = ["SosAlarm"]
+# ==========================================================================
