@@ -1,0 +1,42 @@
+name = "amanaleilah-api"
+main = "worker.js"
+compatibility_date = "2024-09-01"
+
+# هيتحدث تلقائيًا بالأمر اللي هنشغله - سيبها زي ما هي
+[[d1_databases]]
+binding = "DB"
+database_name = "amanaleilah-db"
+database_id = "d7e94ae3-aa22-4e97-ab25-5f06d824f9b9"
+
+[[r2_buckets]]
+binding = "MEDIA"
+bucket_name = "amanaleilah-media"
+
+# تشغيل كل ساعة: حذف البيانات الأقدم من 30 يوم + تنفيذ طلبات حذف الحساب المؤجلة (24 ساعة) في معادها بدقة معقولة
+[triggers]
+crons = ["0 * * * *"]
+
+# بيانات بتظهر في صفحة سياسة الخصوصية الحية (/privacy-policy) - مش أسرار، عادي تتحط هنا صريحة
+[vars]
+PRIVACY_CONTACT_EMAIL = "omarelsokary76@gmail.com"
+PRIVACY_DEVELOPER_NAME = "أمان العيلة"
+PRIVACY_POLICY_DATE = "2026-09-22"
+
+# ملحوظة: الحد من محاولات الدخول (Rate Limiting) بقى شغال بالكامل عن طريق جدول D1 عادي
+# (rate_limits) بدل Cloudflare Rate Limiting binding - عشان محدش يتعب في مشكلة نشر بسببه تاني.
+# شغّل rate_limit_migration.sql عشان يشتغل.
+
+# ==========================================================================
+# تكرار إنذار الاستغاثة (Durable Object) - مفعّلة دلوقتي.
+# مشكلة النشر السابقة كانت غالبًا من الـ Rate Limiting القديم (Cloudflare binding) اللي
+# اتشال خالص واتبدل بجدول D1 عادي (rate_limits) - يعني السبب الأصلي للمشكلة مش موجود دلوقتي.
+# لو حصل أي خطأ في wrangler deploy بعد كده، ابعتلي رسالة الخطأ الكاملة بالظبط من الترمينال.
+
+[[durable_objects.bindings]]
+name = "SOS_ALARM"
+class_name = "SosAlarm"
+
+[[migrations]]
+tag = "v1"
+new_classes = ["SosAlarm"]
+# ==========================================================================
