@@ -1,0 +1,42 @@
+name = "amanaleilah-api"
+main = "worker.js"
+compatibility_date = "2024-09-01"
+
+# هيتحدث تلقائيًا بالأمر اللي هنشغله - سيبها زي ما هي
+[[d1_databases]]
+binding = "DB"
+database_name = "amanaleilah-db"
+database_id = "d7e94ae3-aa22-4e97-ab25-5f06d824f9b9"
+
+[[r2_buckets]]
+binding = "MEDIA"
+bucket_name = "amanaleilah-media"
+
+# تشغيل كل ساعة: حذف البيانات الأقدم من 30 يوم + تنفيذ طلبات حذف الحساب المؤجلة (24 ساعة) في معادها بدقة معقولة
+[triggers]
+crons = ["0 * * * *"]
+
+# بيانات بتظهر في صفحة سياسة الخصوصية الحية (/privacy-policy) - مش أسرار، عادي تتحط هنا صريحة
+[vars]
+PRIVACY_CONTACT_EMAIL = "your-email@example.com"
+PRIVACY_DEVELOPER_NAME = "اسمك أو اسم شركتك"
+PRIVACY_POLICY_DATE = "2026-09-20"
+
+# ملحوظة: الحد من محاولات الدخول (Rate Limiting) بقى شغال بالكامل عن طريق جدول D1 عادي
+# (rate_limits) بدل Cloudflare Rate Limiting binding - عشان محدش يتعب في مشكلة نشر بسببه تاني.
+# شغّل rate_limit_migration.sql عشان يشتغل.
+
+# ==========================================================================
+# تكرار إنذار الاستغاثة (Durable Object) - ده اللي بيخلي التنبيه يتكرر عن طريق
+# السيرفر (Push) كل 30 ثانية لحد 10 دقايق، حتى لو التطبيق مقفول أو الشاشة قافلة
+# عند المستقبل - مش بس لما التطبيق يكون فاتح وظاهر. الحد من محاولات الدخول بقى
+# شغال بجدول D1 عادي (مش Cloudflare Rate Limiting)، فمشكلة النشر القديمة مفروض
+# ما تتكررش. لو النشر فشل، ابعتلي رسالة الخطأ الكاملة بالظبط من الترمينال.
+[[durable_objects.bindings]]
+name = "SOS_ALARM"
+class_name = "SosAlarm"
+
+[[migrations]]
+tag = "v1"
+new_classes = ["SosAlarm"]
+# ==========================================================================
