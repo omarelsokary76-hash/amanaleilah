@@ -2063,7 +2063,7 @@ function renderOverview() {
 }
 
 // ---------- إشعارات حقيقية (Push) ----------
-const VAPID_PUBLIC_KEY_CLIENT = 'BHNbX9qQHUFipNqIdsarAzbwt6lHJPjWHCzqYxRYMW0S1k1b_i5uqk5sLVXtuQ0YLcRBB-aEYO79tCofa_fTqjI';
+const VAPID_PUBLIC_KEY_CLIENT = 'BG0wRXkChpZYUg1QIO9HJ34O_ko0iJNLmP7lVPBd2dPpTXr_Sa1ZUt9vVE89L8Ow2E996ItZqswgvpMN7VchpSI';
 
 function urlBase64ToUint8Array(base64String) {
   const padding = '='.repeat((4 - base64String.length % 4) % 4);
@@ -2087,6 +2087,18 @@ async function setupPushNotifications() {
       return;
     }
     let sub = await reg.pushManager.getSubscription();
+    // لو فيه اشتراك قديم اتسجّل بمفتاح VAPID مختلف عن اللي شغّالين بيه دلوقتي (مثلًا بعد ما اتغيّر المفتاح
+    // على السيرفر)، الاشتراك القديم ده هيفضل موجود بس مش هيقدر يستقبل أي إشعار جديد خالص من غير أي تحذير -
+    // فبنتأكد إن مفتاحه مطابق، ولو لأ نلغيه ونسجّل واحد جديد صح.
+    if (sub) {
+      const currentKey = urlBase64ToUint8Array(VAPID_PUBLIC_KEY_CLIENT);
+      const subKey = new Uint8Array(sub.options && sub.options.applicationServerKey ? sub.options.applicationServerKey : []);
+      const matches = subKey.length === currentKey.length && subKey.every((b, i) => b === currentKey[i]);
+      if (!matches) {
+        await sub.unsubscribe().catch(() => {});
+        sub = null;
+      }
+    }
     if (!sub) {
       sub = await reg.pushManager.subscribe({
         userVisibleOnly: true,
@@ -2218,12 +2230,21 @@ $('standbyToggleBtn').onclick = async () => {
     showToast('المتصفح منع تشغيل الوضع ده، جرب تاني', 'error');
   }
 };
-// لو كان مفعّل قبل كده، نكمله عند أول لمسة بعد فتح التطبيق (المتصفح بيمنع تشغيل الصوت من غير لمسة)
+// لو كان مفعّل قبل كده: نحاول نشغّله فورًا عند فتح الصفحة من غير ما نستنى لمسة - المتصفح بيسمح
+// بده غالبًا لو الموقع اتفتح وشغّل صوت قبل كده كفاية (خصوصًا لو التطبيق فُتح من الشاشة الرئيسية/TWA).
+// ده مهم عشان لو الصفحة اتحمّلت من جديد وهي في الخلفية (بعد ما النظام يعيد تحميلها لأي سبب) من غير حد
+// يلمس الشاشة أصلًا - كان قبل كده وضع الاستعداد بيفضل "شغّال" بالاسم بس فعليًا مش شغّال، لحد ما حد يلمس.
 try {
   if (localStorage.getItem('standbyMode') === '1') {
-    const resumeStandby = () => { startStandby(); };
-    document.addEventListener('pointerdown', resumeStandby, { once: true, passive: true });
-    document.addEventListener('touchstart', resumeStandby, { once: true, passive: true });
+    startStandby().then(ok => {
+      if (!ok) {
+        // اتمنع - نستنى أول لمسة (زي متصفحات قديمة أو أول فتح للتطبيق أصلًا)
+        showToast('وضع الاستعداد مفعّل - دوس أي حتة في الشاشة مرة واحدة عشان يشتغل فعليًا', 'info');
+        const resumeStandby = () => { startStandby(); };
+        document.addEventListener('pointerdown', resumeStandby, { once: true, passive: true });
+        document.addEventListener('touchstart', resumeStandby, { once: true, passive: true });
+      }
+    });
   }
 } catch (e) {}
 // رسايل الـ Service Worker: إشعار Push جه، أو المستخدم ضغط "تم الاطلاع" / قفل الإشعار
