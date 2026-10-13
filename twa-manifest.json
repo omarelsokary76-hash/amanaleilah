@@ -1,0 +1,46 @@
+{
+  "packageId": "com.omarelsokary.amanaleilah",
+  "host": "amanaleilah.aktyaraty.workers.dev",
+  "name": "أمان العيلة",
+  "launcherName": "أمان العيلة",
+  "display": "standalone",
+  "orientation": "portrait",
+  "themeColor": "#6d28d9",
+  "navigationColor": "#6d28d9",
+  "backgroundColor": "#f5f3ff",
+  "startUrl": "/",
+  "iconUrl": "https://amanaleilah.aktyaraty.workers.dev/icon-512.png",
+  "maskableIconUrl": "https://amanaleilah.aktyaraty.workers.dev/icon-512-maskable.png",
+  "webManifestUrl": "https://amanaleilah.aktyaraty.workers.dev/manifest.json",
+  "fullScopeUrl": "https://amanaleilah.aktyaraty.workers.dev/",
+  "appVersion": "1.0.0",
+  "appVersionCode": 1,
+  "enableNotifications": true,
+  "enableSiteSettingsShortcut": false,
+  "fallbackType": "customtabs",
+  "features": {
+    "locationDelegation": {
+      "enabled": true
+    }
+  },
+  "signingKey": {
+    "path": "./android.keystore",
+    "alias": "amanaleilah"
+  },
+  "shortcuts": [
+    {
+      "name": "الشات",
+      "shortName": "الشات",
+      "url": "/?tab=chat"
+    },
+    {
+      "name": "العائلة",
+      "shortName": "العائلة",
+      "url": "/?tab=family"
+    }
+  ],
+  "isChromeOSOnly": false,
+  "isMetaQuest": false,
+  "minSdkVersion": 21,
+  "targetSdkVersion": 36
+}
